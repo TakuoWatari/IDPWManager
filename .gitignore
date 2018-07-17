@@ -1,3 +1,4 @@
+
 # Java
 *.class
 *.jar
@@ -35,3 +36,6 @@ bin
 *.log
 *.swp
 *.bak
+
+# Dataƒtƒ@ƒCƒ‹
+*.dat

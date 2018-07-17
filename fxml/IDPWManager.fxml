@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.IDPWManagerController">
+   <children>
+      <HBox alignment="CENTER_LEFT" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <Label fx:id="loginId" alignment="CENTER_RIGHT" text="ID">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" text=" ： ">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="loginName" text="名前">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#onClickUserSettingButton" text="ユーザー設定" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <Button mnemonicParsing="false" onAction="#onClickAddDataButton" text="追加" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0" />
+      <TableView fx:id="idpwTable" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0">
+         <columns>
+            <TableColumn editable="false" minWidth="75.0" prefWidth="75.0" resizable="false" text="区分">
+              <cellValueFactory>
+                <PropertyValueFactory property="dataType"/>
+              </cellValueFactory>
+            </TableColumn>
+            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="130.0" text="名称">
+              <cellValueFactory>
+                <PropertyValueFactory property="name"/>
+              </cellValueFactory>
+            </TableColumn>
+            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="130.0" text="ID">
+              <cellValueFactory>
+                <PropertyValueFactory property="accountId"/>
+              </cellValueFactory>
+            </TableColumn>
+            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="130.0" text="PW">
+              <cellValueFactory>
+                <PropertyValueFactory property="accountPw"/>
+              </cellValueFactory>
+            </TableColumn>
+            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="265.0" text="備考">
+              <cellValueFactory>
+                <PropertyValueFactory property="comment"/>
+              </cellValueFactory>
+            </TableColumn>
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

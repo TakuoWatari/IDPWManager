@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.IDPWDataBoxController">
+   <children>
+      <Label alignment="CENTER_RIGHT" prefWidth="50.0" text="区分：" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0" />
+      <RadioButton fx:id="originalType" mnemonicParsing="false" selected="true" text="個人" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="10.0">
+         <toggleGroup>
+            <ToggleGroup fx:id="dataTypeGroup" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="commonType" mnemonicParsing="false" text="共有" toggleGroup="$dataTypeGroup" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="10.0" />
+      <Label alignment="CENTER_RIGHT" prefWidth="50.0" text="名称：" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0" />
+      <TextField fx:id="nameField" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="35.0" />
+      <Label alignment="CENTER_RIGHT" prefWidth="50.0" text="ＩＤ：" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+      <TextField fx:id="idField" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0" />
+      <Label alignment="CENTER_RIGHT" prefWidth="50.0" text="PW：" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="100.0" />
+      <TextField fx:id="pwField" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="95.0" />
+      <Label alignment="CENTER_RIGHT" prefWidth="50.0" text="備考：" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="130.0" />
+      <TextArea fx:id="commentArea" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="125.0" />
+      <Button fx:id="registrationButton" mnemonicParsing="false" onAction="#onClickRegistrationButton" prefWidth="50.0" text="登録" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="80.0" />
+      <Button fx:id="updateButton" mnemonicParsing="false" onAction="#onClickUpdateButton" text="変更" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="127.0" />
+      <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onClickDeleteButton" text="削除" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="80.0" />
+      <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#onClickCancelButton" text="キャンセル" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+   </children>
+</AnchorPane>
