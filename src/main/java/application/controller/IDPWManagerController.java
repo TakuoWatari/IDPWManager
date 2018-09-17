@@ -50,7 +50,12 @@ public class IDPWManagerController extends ControllerBase {
 		deleteItem.setOnAction(event -> {
 			deleteProcess();
 		});
+		MenuItem addItem = new MenuItem("追加　(Ctrl + I)");
+		deleteItem.setOnAction(event -> {
+			createNewData();
+		});
 		ContextMenu menu = new ContextMenu();
+		menu.getItems().add(addItem);
 		menu.getItems().add(copyItem);
 		menu.getItems().add(deleteItem);
 		this.idpwTable.setContextMenu(menu);
@@ -68,6 +73,8 @@ public class IDPWManagerController extends ControllerBase {
 				copyProcess();
 			} else if (event.isControlDown() && (event.getCode() == KeyCode.D)) {
 				deleteProcess();
+			} else if (event.isControlDown() && (event.getCode() == KeyCode.I)) {
+				createNewData();
 			} else if (event.getCode() == KeyCode.ENTER) {
 				IDPW targetData = idpwTable.getSelectionModel().getSelectedItem();
 				if (targetData != null) {
@@ -87,6 +94,16 @@ public class IDPWManagerController extends ControllerBase {
 		refreshIDPW();
 	}
 
+	@FXML
+	private void reload() {
+		this.refreshIDPW();
+	}
+
+	@FXML
+	private void exit() {
+		this.close();
+	}
+
 	private void refreshIDPW() {
 		this.idpwList.clear();
 		IDPWManager idpwMng = (IDPWManager) ApplicationContext.get(IDPWConst.KEY_VALUE);
@@ -94,19 +111,22 @@ public class IDPWManagerController extends ControllerBase {
 		this.idpwList.addAll(dataList);
 	}
 
-	public void onClickUserSettingButton() throws IOException {
+	@FXML
+	private void showUserInfoDialog() throws IOException {
 		UserInfoSettingController.show(this.getStage());
 
 		User loginUser = (User) ApplicationContext.get(AuthenticationConst.CONTEXT_KEY_LOGIN_USER);
 		this.loginName.setText(loginUser.getName());
 	}
 
-	public void onClickAddDataButton() {
+	@FXML
+	private void createNewData() {
 		showDataBox("登録画面", null);
 		refreshIDPW();
 	}
 
-	public void onClickIDPWTable() {
+	@FXML
+	private void showEditDialog() {
 		IDPW targetData = this.idpwTable.getSelectionModel().getSelectedItem();
 		if (targetData == null) {
 			this.showErrorMessage(Message.getMessage(IDPWMessage.E0006));
@@ -116,10 +136,12 @@ public class IDPWManagerController extends ControllerBase {
 		}
 	}
 
+	@FXML
 	private final void copyProcess() {
 		CommonUtil.saveClipboardSelectedTableViewCellData(this.idpwTable);
 	}
 
+	@FXML
 	private final void deleteProcess() {
 		IDPW targetData = this.idpwTable.getSelectionModel().getSelectedItem();
 		if (targetData == null) {
@@ -138,7 +160,7 @@ public class IDPWManagerController extends ControllerBase {
 		}
 	}
 
-	protected void showDataBox(String title, IDPW targetData) {
+	private void showDataBox(String title, IDPW targetData) {
 		try {
 			IDPWDataBoxController.show(this.getStage(), title, targetData);
 			refreshIDPW();

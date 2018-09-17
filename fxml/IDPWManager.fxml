@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -10,7 +11,30 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.IDPWManagerController">
    <children>
-      <HBox alignment="CENTER_LEFT" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="ファイル">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#exit" text="閉じる" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="データ">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#createNewData" text="新規追加 (Ctrl + I)" />
+                  <MenuItem mnemonicParsing="false" onAction="#showEditDialog" text="編集" />
+                  <MenuItem mnemonicParsing="false" onAction="#copyProcess" text="コピー (Ctrl + C)" />
+                  <MenuItem mnemonicParsing="false" onAction="#deleteProcess" text="削除 (Ctrl + D)" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="設定">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#reload" text="再読み込み" />
+                  <MenuItem mnemonicParsing="false" onAction="#showUserInfoDialog" text="ユーザ情報" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox alignment="CENTER_LEFT" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="35.0">
          <children>
             <Label fx:id="loginId" alignment="CENTER_RIGHT" text="ID">
                <font>
@@ -26,33 +50,31 @@
                </font></Label>
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#onClickUserSettingButton" text="ユーザー設定" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-      <Button mnemonicParsing="false" onAction="#onClickAddDataButton" text="追加" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0" />
       <TableView fx:id="idpwTable" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0">
          <columns>
             <TableColumn editable="false" minWidth="75.0" prefWidth="75.0" resizable="false" text="区分">
               <cellValueFactory>
-                <PropertyValueFactory property="dataType"/>
+                <PropertyValueFactory property="dataType" />
               </cellValueFactory>
             </TableColumn>
-            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="130.0" text="名称">
+            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="180.0" text="名称">
               <cellValueFactory>
-                <PropertyValueFactory property="name"/>
+                <PropertyValueFactory property="name" />
               </cellValueFactory>
             </TableColumn>
-            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="130.0" text="ID">
+            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="180.0" text="ID">
               <cellValueFactory>
-                <PropertyValueFactory property="accountId"/>
+                <PropertyValueFactory property="accountId" />
               </cellValueFactory>
             </TableColumn>
-            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="130.0" text="PW">
+            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="180.0" text="PW">
               <cellValueFactory>
-                <PropertyValueFactory property="accountPw"/>
+                <PropertyValueFactory property="accountPw" />
               </cellValueFactory>
             </TableColumn>
-            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="265.0" text="備考">
+            <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="400.0" text="備考">
               <cellValueFactory>
-                <PropertyValueFactory property="comment"/>
+                <PropertyValueFactory property="comment" />
               </cellValueFactory>
             </TableColumn>
          </columns>
